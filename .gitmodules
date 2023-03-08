@@ -1,0 +1,3 @@
+[submodule "LIA"]
+	path = LIA
+	url = git@github.com:hcds-itu/LIA
