@@ -1,9 +1,3 @@
 [submodule "LIA"]
 	path = LIA
 	url = git@github.com:hcds-itu/LIA
-[submodule "RAFSwap"]
-	path = RAFSwap
-	url = git@github.com:hcds-itu/RAFSwap
-[submodule "SimSwap"]
-	path = SimSwap
-	url = git@github.com:hcds-itu/SimSwap
