@@ -32,7 +32,7 @@ Github : https://github.com/hcds-itu/so-vits-svc-fork.git
 follow installation of fork -> prepare data by downloading video -> divide into snippets of approx 7s (ffmpeg -i somefile.mp3 -f segment -segment_time 7 -c copy out%d.wav)
 
 
-# Perspective:
+# Other paths:
 
 There are many paths to go to imitate a source visually. Besides image animation, different face swap models were considered. Although the quality of the results are realistic, the results look more like a fusion of the source and driver rather than one or the other. 
 Finetuned text to video diffusion models based on stable-diffusion were also considered. The results however were not realistic.
