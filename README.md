@@ -25,7 +25,7 @@ Colab for reproducing results : https://colab.research.google.com/drive/1lrze_pI
 
 # Voice cloning
 
-For voice transformation, we used the open source model So-Vits-Svc-fork. We followed the repositories instructions on how to set up the conda environment, and how to train a finetuned model. We sampled approximately 20 minutes of speech of the source, split it into 7 seconds long wav files, and trained the voice model. We altered only batch-size and epochs, but this ultimately depends on the compute resources available. We used a batch-size of 20 and trained for (x) hours, with (y) epochs, going through (z) samples.
+For voice transformation, we used the open source model So-Vits-Svc-fork. We followed the repository's instructions on how to set up the conda environment, and how to train a finetuned model. We sampled approximately 20 minutes of speech of the source, split it into 7 seconds long wav files, and trained the voice model. We altered only batch-size and epochs, but this ultimately depends on the compute resources available. We used a batch-size of 20 and trained for (x) hours, with (y) epochs, going through (z) samples.
 
 Github : https://github.com/hcds-itu/so-vits-svc-fork.git
 
