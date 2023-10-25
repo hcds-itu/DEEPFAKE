@@ -2,38 +2,40 @@
 DEEPFAKE project funded by Meta Research
 
 # Introduction
-This project has been created for research purposes only. The ethical guidelines of the submodules have been followed, which is also expected of anyone intending to replicate the scientific discoveries. 
+This project has been created for research purposes only. Anyone intending to replicate the scientific discoveries are expected to also follow the ethical guidelines stated in the github repositories that we use a submodules. 
 
-The aim of this project is to generate realistic videos of specified people that never existed ie. convincing deepfakes. The resulting deepfakes of this project were generated with consent of the data giving parts, and they have been shown to participants of a scientific survey. These participants were informed about the origin of the results and their fabrication.
+The aim of this project is to demonstrate how to generate realistic videos of specified people (deepfakes) and research the credibility of the deepfakes. The owners of the data that we applied our methods to gave consent to do so. However, we will refrain from allowing public access to the data. Anyone interested in seeing the actual data can contact us. Otherwise, one can still use our method on their own data.
 
 # Requirements for deepfake
 
-A person to imitate (source), and a video of a person to drive the motion and speech of the source (driver) are required.
-To animate the source according to the motion of the driver, it is possible to use a pretrained image animation model, which requires a closeup portrait of the source.
-To transform the driver's voice to the source's voice, one would need to train a voice-voice model. This would require approximately 20 minutes or more speech data of the source to be succesful.
+Using our method, one has to have access to the following ressources:
+
+An image of a person to imitate (source), and a video of a person to drive the motion and speech of the source (driver) are required. Both are required to have a resolution of 256x256 and the face needs to occupy most of the frame. This data is used to animate the source into a video.
+
+One needs 20 minutes or more speech data of the person depicted in the source to be succesful. This data is used to train the voice-to-voice model
 
 
 # Face animation
 
-For the face animation, Latent-Image-Animator (LIA) was used. LIA is a GAN based model with the aim of animating motion in a target image from a motion donor (video). We used the "vox.pt" model that animates speech in a closeup portrait of the source. We used a still image of the source, and zoomed in on the face. Likewise, the video of the driver must also be close to the face. The resolution of both the source and the driver must be 256 x 256 pixels. We would pass these a arguments to LIA.
+The GAN based model, Latent-Image-Animator (LIA), was used to animate the source. We used the "vox.pt" model weights that is used when LIA needs to animate the motion of the face in a closeup portrait of the source.
 
 Paper : https://arxiv.org/abs/2203.09043
 
-Colab for reproducing results : https://colab.research.google.com/drive/1lrze_pIUh3dqEKawunXN5NXGzbFpp1KS?usp=sharing
+Use this colab notebook to generate your own videos with your own data. Otherwise, you can use colab notebook within the LIA submodule: https://colab.research.google.com/drive/1lrze_pIUh3dqEKawunXN5NXGzbFpp1KS?usp=sharing
 
-Later, we used prolific to put the resulting, animated video of the source, and put it into place of the still image, where the zoom had happened.
+Later, we used prolific to synchronize the animated video, which was a closeup, with the original video, which the source was a crop of.
 
 # Voice cloning
 
-For voice transformation, we used the repositroy So-Vits-Svc-fork. We followed the repository's instructions on how to set up the conda environment, and how to train a finetuned model. We sampled approximately 20 minutes of speech of the source, split it into 7 seconds long wav files, and trained the voice model. We altered only batch-size and epochs, but this ultimately depends on the compute resources available. We used a batch-size of 20 and trained for (x) hours, with (y) epochs, going through (z) samples.
+To replicate the voice of the person depicted in the source, we trained a model on the voice data using the repository So-Vits-Svc-fork. We followed the repository's instructions on how to set up the conda environment, and how to train a finetuned model. We split the voice data into 7 seconds long `wav` files, and trained the voice model. You can use the following linux command:
 
-Github : https://github.com/hcds-itu/so-vits-svc-fork.git
+```
+ffmpeg -i somefile.mp3 -f segment -segment_time 7 -c copy out%d.wav
+```
 
-follow installation of fork -> prepare data by downloading video -> divide into snippets of approx 7s (ffmpeg -i somefile.mp3 -f segment -segment_time 7 -c copy out%d.wav)
+We altered only batch-size and epochs, but this ultimately depends on the compute resources available. We used a batch-size of 20 and trained for 15 hours, with 3833 epochs, going through 107 samples.
+
+Repository : https://github.com/hcds-itu/so-vits-svc-fork.git
 
 
-# Other paths
-
-There are many paths to go to imitate a source visually. Besides image animation, different face swap models were considered. Although the quality of the results are realistic, the results look like a fusion of the source and driver rather than one or the other. 
-Finetuned text to video diffusion models based on stable-diffusion were also considered. The results however were not realistic.
 
