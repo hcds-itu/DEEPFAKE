@@ -1,6 +1,6 @@
 [submodule "LIA"]
 	path = LIA
-	url = git@github.com:hcds-itu/LIA
+	url = https://github.com/hcds-itu/LIA.git
 [submodule "so-vits-svc-fork"]
 	path = so-vits-svc-fork
-	url = git@github.com:hcds-itu/so-vits-svc-fork.git
+	url = https://github.com/hcds-itu/so-vits-svc-fork.git

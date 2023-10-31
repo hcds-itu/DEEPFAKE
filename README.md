@@ -21,21 +21,24 @@ The GAN based model, Latent-Image-Animator (LIA), was used to animate the source
 
 Paper : https://arxiv.org/abs/2203.09043
 
-Use this colab notebook to generate your own videos with your own data. Otherwise, you can use colab notebook within the LIA submodule: https://colab.research.google.com/drive/1lrze_pIUh3dqEKawunXN5NXGzbFpp1KS?usp=sharing
+Upload `LIA-colab.ipynb` in colab to reproduce the image animation that is used in the DEEPFAKE sample. 
 
-Later, we used prolific to synchronize the animated video, which was a closeup, with the original video, which the source was a crop of.
+Remember to download the data and follow the instructions in the notebook. The data relevant for the image animation is located in the `data/vid/` directory in the Open Science repository. 
+
+After generation of the animation, we use prolific to synchronize the animated video, with the original video.
 
 # Voice cloning
 
-To replicate the voice of the person depicted in the source, we trained a model on the voice data using the repository So-Vits-Svc-fork. We followed the repository's instructions on how to set up the conda environment, and how to train a finetuned model. We split the voice data into 7 seconds long `wav` files, and trained the voice model. You can use the following linux command:
+To replicate the voice of the person depicted in the source, we trained a model on the voice data using the repository So-Vits-Svc-fork. We followed the repository's instructions on how to set up the conda environment, and how to train a finetuned model. We split the voice data into 7 seconds long `wav` files, and trained the voice model. You can use the following linux command to divide the file into smaller voice segments:
 
 ```
 ffmpeg -i somefile.mp3 -f segment -segment_time 7 -c copy out%d.wav
 ```
 
+The data is also located in the `data/vid/` directory in the Open Science repository. 
+
 We altered only batch-size and epochs, but this ultimately depends on the compute resources available. We used a batch-size of 20 and trained for 15 hours, with 3833 epochs, going through 107 samples.
 
 Repository : https://github.com/hcds-itu/so-vits-svc-fork.git
-
 
 
