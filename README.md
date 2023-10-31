@@ -23,7 +23,7 @@ Paper : https://arxiv.org/abs/2203.09043
 
 Upload `LIA-colab.ipynb` in colab to reproduce the image animation that is used in the DEEPFAKE sample. 
 
-Remember to download the data and follow the instructions in the notebook. The data relevant for the image animation is located in the `data/vid/` directory in the Open Science repository. 
+Remember to download the data and follow the instructions in the notebook. The data relevant for the image animation is located in the `data/vid/` directory in the Open Science repository. When running the notebook, the resulting vide will be located in `DEEPFAKE/LIA/res/vox/`.
 
 After generation of the animation, we use prolific to synchronize the animated video, with the original video.
 
@@ -35,7 +35,7 @@ To replicate the voice of the person depicted in the source, we trained a model 
 ffmpeg -i somefile.mp3 -f segment -segment_time 7 -c copy out%d.wav
 ```
 
-The data is also located in the `data/vid/` directory in the Open Science repository. 
+The data is also located in the `data/voice/` directory in the Open Science repository. 
 
 We altered only batch-size and epochs, but this ultimately depends on the compute resources available. We used a batch-size of 20 and trained for 15 hours, with 3833 epochs, going through 107 samples.
 
